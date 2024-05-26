@@ -30,6 +30,7 @@ app.get("/",(req,res)=>{
    })
 })
 
+
 //send data body
 app.post('/',function(req,res){
     const isHealthy = req.body.isHealthy;
@@ -39,6 +40,27 @@ app.post('/',function(req,res){
     res.json({
       message:"Kidney added"
     })
+})
+
+app.put("/",function(req,res){
+  for( let i =0;i<users[0].kidneys.length;i++){
+    users[0].kidneys[i].healthy = true; //reset all kidneys healthy 
+  }
+  res.json({
+    message:"Set kidneys are healthy"
+  })
+})
+app.delete("/",function(req,res){
+  const newHealthyKidneys = [];
+  for( let i =0;i<users[0].kidneys.length;i++){
+    if(users[0].kidneys[i].healthy){
+      newHealthyKidneys.push({healthy:true})
+    }
+    }
+  users[0].kidneys = newHealthyKidneys;
+  res.json({
+    message:"Removed unhealthy kidneys"
+  })
 })
 
 app.listen(3000, () => {
