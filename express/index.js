@@ -1,45 +1,33 @@
 //rest API ,http   
-
 const express = require("express");
-const bodyParser = require("body-parser")
 const app = express();
-const port = 3000;
-// app.use(bodyParser.json());
-function sum(n){
-    let ans =0;
-    for(let i =0;i<=n;i++){
-      ans = ans+i;
-    }
-    return ans;
 
-}
-
-app.get('/',(req,res)=>{
-  const n = req.query.n;
-  const ans = sum(n);
-  res.send(ans.toString());
-})
-app.post("/route-handler",function(req,res){
-    console.log(req.body);
-    res.send("Hello World 1");
-    // res.json({
-    //     message: "Hello World 2",
-    //     age : 21 
+var users =[
+  {
+    name :" John",
+    kidneys:[{
+      healthy :false
+    }]
+  }
+];
+app.get("/",(req,res)=>{
+   const jhonKidneys = users[0].kidneys;
+   const numberofKidneys = jhonKidneys.length;
+   const healthyKidneys = 0;
+   for( let i=0;i<jhonKidneys.length;i++){
+      if(jhonKidneys[i].healthy){
+        healthyKidneys++;
+      }
     
-    // })
+   }
+   const numberofUnhealthyKidneys  = numberofKidneys - healthyKidneys;
+   res.json({
+      numberofKidneys,
+      healthyKidneys,
+      numberofUnhealthyKidneys
+   })
 })
-// app.post('/backend-api/conversation',(req,res)=>{
-//   const message = req.body.message
-//   console.log(message);
-//   //Mechine learning model 
-//   res.json({
-//     output :'2+2 = 4'
-//   })
-// })
-app.get("/sum", (req, res) => {
-  res.send("Hello World");
-});
 
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+app.listen(3000, () => {
+  console.log(`Server is running at http://localhost:3000`);
 });
