@@ -51,7 +51,9 @@ app.put("/",function(req,res){
   })
 })
 app.delete("/",function(req,res){
-  const newHealthyKidneys = [];
+  //wrong input return 411 
+  if(atLeastOneUnhealthy()){
+    const newHealthyKidneys = [];
   for( let i =0;i<users[0].kidneys.length;i++){
     if(users[0].kidneys[i].healthy){
       newHealthyKidneys.push({healthy:true})
@@ -61,8 +63,26 @@ app.delete("/",function(req,res){
   res.json({
     message:"Removed unhealthy kidneys"
   })
+  }
+  else{
+    res.status(411).json({
+      message:"All kidneys are healthy"
+    })
+  
+  }
 })
+
+function atLeastOneUnhealthy(){
+   let atLeastOneUnhealthy = false;
+   for( let i =0;i<users[0].kidneys.length;i++){
+    if(!users[0].kidneys[i].healthy){
+      atLeastOneUnhealthy = true;
+   }
+}
+return atLeastOneUnhealthy;
+}
 
 app.listen(3000, () => {
   console.log(`Server is running at http://localhost:3000`);
-});
+    } 
+)
