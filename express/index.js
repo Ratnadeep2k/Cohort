@@ -4,20 +4,20 @@ const express = require("express");
 const bodyParser = require("body-parser")
 const app = express();
 const port = 3000;
-app.use(bodyParser.json());
-function sum(a,b){
+// app.use(bodyParser.json());
+function sum(n){
     let ans =0;
-    for(let i =0;i<=navigator;i++){
+    for(let i =0;i<=n;i++){
       ans = ans+i;
     }
     return ans;
 
 }
 
-app.get('/sum',(req,res)=>{
+app.get('/',(req,res)=>{
   const n = req.query.n;
   const ans = sum(n);
-  res.send(ans);
+  res.send(ans.toString());
 })
 app.post("/route-handler",function(req,res){
     console.log(req.body);
@@ -28,15 +28,15 @@ app.post("/route-handler",function(req,res){
     
     // })
 })
-app.post('/backend-api/conversation',(req,res)=>{
-  const message = req.body.message
-  console.log(message);
-  //Mechine learning model 
-  res.json({
-    output :'2+2 = 4'
-  })
-})
-app.get("/", (req, res) => {
+// app.post('/backend-api/conversation',(req,res)=>{
+//   const message = req.body.message
+//   console.log(message);
+//   //Mechine learning model 
+//   res.json({
+//     output :'2+2 = 4'
+//   })
+// })
+app.get("/sum", (req, res) => {
   res.send("Hello World");
 });
 
