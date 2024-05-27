@@ -2,19 +2,22 @@
 const express = require('express')
 const app = express();
 const port = 3000;
+  
 let numberOfRequest =0;
 function calculateRequest(req,res,next){
     numberOfRequest++;
+    console.log(numberOfRequest)
     next();
 
 }
-app.get('/calculate',calculateRequest,function(req,res){
-    res.json({
-        status: 'success',
-        message: 'The number of requests is ' + numberOfRequest
-    })
+app.use(calculateRequest);//middleware call itself if it is not called 
+// app.get('/calculate',function(req,res){
+//     res.json({
+//         status: 'success',
+//         message: 'The number of requests is ' + numberOfRequest
+//     })
 
-})
+// })
 app.get('/checkup', function(req,res){
     const username = req.headers.username;
     const password = req.headers.password;
