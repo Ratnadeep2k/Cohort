@@ -21,6 +21,7 @@
 interface User{
     name : string;
     age : number;
+    email?: string; //optional 
 
 }
 function isLegal(user :User){
