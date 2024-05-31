@@ -1,5 +1,14 @@
 <html>
 <script>
+    let timeout ;
+    function debouncehandleClick(){
+        //delay the call the handle click until  I have  not been called for 100ms and I have been called atleast once 
+         clearTimeout(timeout);
+         timeout = setTimeout(function(){
+            handleClick();
+         },1000)
+    //How to clear a clock => clearTimeout
+    }
     async function handleClick(){
         const a = document.getElementById("first").value;
         const b = document.getElementById("second").value
@@ -11,9 +20,9 @@
     }
 </script>
 <body>
-    <input id ='first' type="text" text placeholder="First Number"></input> <br></br>
-    <input  id ='second' type="text" text placeholder="Second Number"></input> <br></br>
-    <button onclick="handleClick()">Calculate</button> <br></br>
+    <input onInput="debouncehandleClick()"id ='first' type="text" text placeholder="First Number"></input> <br></br>
+    <input  onInput="debouncehandleClick()"  id ='second' type="text" text placeholder="Second Number"></input> <br></br>
+    <!-- <button oninput="debouncehandleClick()">Calculate</button> <br></br> -->
     <div id="finalSum"></div>
 </body>
 </html>        
