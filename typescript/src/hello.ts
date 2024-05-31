@@ -10,10 +10,29 @@
 // console.log(sum(1,2)); 
 
 
-function runAfter1s(fn :()=> void){
- setTimeout(fn, 1000);
-}
+// function runAfter1s(fn :()=> void){
+//  setTimeout(fn, 1000);
+// }
 
-runAfter1s(function(){
-    console.log("Hello");
+// runAfter1s(function(){
+//     console.log("Hello");
+// })
+
+interface User{
+    name : string;
+    age : number;
+
+}
+function isLegal(user :User){
+    if(user.age >18){
+       console.log("is Legal")
+    }
+    else{
+       console.log("isnot Legal")
+    }
+
+}
+isLegal({
+    name : "John",
+    age : 2
 })
