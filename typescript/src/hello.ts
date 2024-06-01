@@ -18,22 +18,47 @@
 //     console.log("Hello");
 // })
 
-interface User{
-    name : string;
-    age : number;
-    email?: string; //optional 
+// interface User{
+//     name : string;
+//     age : number;
+//     email?: string; //optional 
 
-}
-function isLegal(user :User){
-    if(user.age >18){
-       console.log("is Legal")
-    }
-    else{
-       console.log("isnot Legal")
-    }
+// }
+// function isLegal(user :User){
+//     if(user.age >18){
+//        console.log("is Legal")
+//     }
+//     else{
+//        console.log("isnot Legal")
+//     }
 
+// }
+// isLegal({
+//     name : "John",
+//     age : 2
+// })
+// interface Person{
+//     name : string;
+//     age : number;
+//     greet(phrase : string):void
+// }
+// class Employee implements Person{
+//     name : string;
+//     age : number;
+//     constructor(name : string, age : number){
+//         this.name = name;
+//         this.age = age;
+//     }
+    
+//     greet(phrase:string){
+//         console.log(`${phrase} ${this.name}`);
+//     }
+
+// }
+//Type 
+type greeArg = number | string |boolean
+function greet(id: greeArg){
+    console.log(id);
 }
-isLegal({
-    name : "John",
-    age : 2
-})
+greet(1);
+greet(3) 
