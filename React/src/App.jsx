@@ -12,6 +12,7 @@ function App() {
   // }
 
    let count =useMemo(()=>{
+    console.log("Memo got Called");
     let Fcount =0;
     for( let i=0;i<=input ;i++){
       Fcount = Fcount+i;
