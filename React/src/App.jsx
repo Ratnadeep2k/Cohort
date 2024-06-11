@@ -1,37 +1,24 @@
-import { useState ,useMemo } from 'react'
+import { useState , memo } from 'react'
 
 import './App.css'
 
 function App() {
   const [counter, setCounter] = useState(0)
-  const [input,setInput] = useState(1);
-
-  // let count =0;
-  // for( let i=0;i<=input ;i++){
-  //   count = count+i;
-  // }
-
-   let count =useMemo(()=>{
-    console.log("Memo got Called");
-    let Fcount =0;
-    for( let i=0;i<=input ;i++){
-      Fcount = Fcount+i;
-    }
-    return Fcount;
-   },[input])
+   function logSomething(){
+    console.log('logging')
+   }
   return (
     <>
-    <input onChange={function(e){
-      setInput(e.target.value);
-    }}></input> <br/>
-    Sum from 1 to {input} is {count}
-    <br/>
-    <button  onClick={()=>{
-      setCounter(counter+1);
-    }}>Counter {counter}</button>
+    <ButtonComponent inputFunction ={logSomething} />
+    <button onClick ={()=>{
+      setCounter(counter+1)
+    }}>Click Me {counter}</button>
 
     </>
   )
 }
-
+  const ButtonComponent = memo(({inputFunction})=>{
+    console.log("Child Render")
+    return <button onClick={inputFunction}>Button Clicked</button>
+  })
 export default App
