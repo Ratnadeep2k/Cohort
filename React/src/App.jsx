@@ -4,8 +4,8 @@ import './App.css'
 
 function App() {
   const [counter, setCounter] = useState(0)
-   function logSomething(){
-    console.log('logging')
+   const logSomething = ()=>{
+    console.log("Button Clicked")
    }
   return (
     <>
@@ -18,7 +18,7 @@ function App() {
   )
 }
   const ButtonComponent = memo(({inputFunction})=>{
-    console.log("Child Render")
+    console.log("Child Render") 
     return <button onClick={inputFunction}>Button Clicked</button>
   })
 export default App
