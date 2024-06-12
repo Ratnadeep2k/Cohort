@@ -1,13 +1,14 @@
-
+import {lazy,Suspense} from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
-import { Dashboard } from './components/Dashboard'
+const  Dashboard = lazy(()=> import('./components/Dashboard'))
 import { Landing } from './components/Landing'
+import { CountContext } from './components/Home'
 
 function App() {
 
 
-  return ( 
+  return (  
     <div>
       <div>
         <button onClick={()=>{
@@ -23,9 +24,10 @@ function App() {
       </div>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Landing/>} />
-        <Route path="/dashboard" element={<Dashboard/>} />
+        <Route path="/" element={<Home/>} />
+        <Route path="/dashboard" element={<Suspense fallback={"loading..."}><Dashboard/></Suspense>} />
         <Route path="/landing" element={<Landing />} />
+        
       </Routes>
     </BrowserRouter>
     </div>
