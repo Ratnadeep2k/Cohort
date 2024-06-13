@@ -26,8 +26,10 @@ function CountRenderer() {
   const count = useContext(CountContext);
 
   return <div>
+    <b>
     {count}
-  </div>
+    </b>
+  </div>       
 }
 
 function Buttons({setCount}) {
