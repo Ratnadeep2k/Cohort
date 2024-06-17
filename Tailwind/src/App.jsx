@@ -7,18 +7,15 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div style ={{display:'flex',justifyContent:'space-around'}}> 
-            <div style ={{background:"red"}}>
-              Hii
-            </div>
-            <div style ={{background:"blue"}}>
-              Hello
-              </div>
+    <> 
+      <div className='grid grid-cols-3 sm:grid-cols-3'>
+        <div className='bg-red-500'>Hi</div>
+        <div className='bg-blue-500 '>Hi</div>
+        <div className='bg-green-500'>Hi</div>
       </div>
-
     </>
   )
 }
 
 export default App
+ 
