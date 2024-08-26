@@ -6,7 +6,6 @@
    connectionString :"postgresql://testdb_owner:iTNhCOHJj7X9@ep-shy-surf-a5zkxh8l.us-east-2.aws.neon.tech/testdb?sslmode=require"
  })
 
-
  async function createUserTable(){
     await client.connect()
     const result = await client.query(`
