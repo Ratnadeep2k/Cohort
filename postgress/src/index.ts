@@ -3,7 +3,7 @@
 
  import { Client } from "pg";
  const client =new Client({
-   connectionString :"postgresql://Learning_owner:OHBA7u4GtYsI@ep-solitary-cherry-a5wevzxd.us-east-2.aws.neon.tech/Learning?sslmode=require"
+   connectionString :"postgresql://postgres:ratnadeep@localhost:5432/postgres?sslmode=disable"
  })
 
  async function createUserTable(){
