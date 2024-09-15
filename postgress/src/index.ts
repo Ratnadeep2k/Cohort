@@ -41,9 +41,10 @@
 //  createUserTable();
 
 
+
+
+
 //Fetch email from db 
-
-
 async function getUser(email:string){
   await client.connect();
   const query  ='SELECT * FROM users WHERE email =$1';
