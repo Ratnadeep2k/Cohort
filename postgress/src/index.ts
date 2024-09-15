@@ -19,11 +19,12 @@
 //      `)
 //      console.log(result);
 //  }
-     async function insertData(){
+     async function insertData(username:string,email:string,password :string){
       await client.connect();
       try{
-        const insertQuery ="INSERT INTO users (username,email,password) VALUES ('username2','username@gmail.com','anypassword')";
-        const result = await client.query(insertQuery);
+        const insertQuery ="INSERT INTO users (username,email,password) VALUES ($1,$2,$3)";
+        const values =[username ,email,password];
+        const result = await client.query(insertQuery,values);
         console.log("Insertion Sucess",result);
       }
       catch(err){
@@ -33,7 +34,7 @@
         await client.end();
       }
      }
-insertData();
+insertData("test","test@gmail.com","test123");
 
 
 
